@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 
+
 public class Orders {
 	
 	private String orderId;
@@ -12,7 +13,7 @@ public class Orders {
 	
 	// Ad packages to sell/buy
 //	private ArrayList<Ads> adsList = new ArrayList<Ads>();
-//	private ArrayList<Product> productList = new ArrayList<Product>();		// items to sell/buy
+	private ArrayList<Product> productList = new ArrayList<Product>();		// items to sell/buy
 		
 	private Category orderType;					// Product&Services, Ride		
 	private Category orderMode;					// call, online, in-shop, other
@@ -328,4 +329,14 @@ public class Orders {
 	public synchronized void setSellerId(String sellerId) {
 		this.sellerId = sellerId;
 	}
+	
+	public ArrayList<Product> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(ArrayList<Product> productList) {
+		this.productList = productList;
+	}
+	
+	
 }

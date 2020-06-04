@@ -13,7 +13,7 @@ public class DBConnectionHandler {
 			String connectionURL = "jdbc:mysql://mysql-mumbai-campushaat.cohdp50bvpva.ap-south-1.rds.amazonaws.com:3306/"+ Constants.mysqlDBName;
 			Connection connection = null;
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			connection = DriverManager.getConnection(connectionURL, "admin", "ye to galat h");
+			connection = DriverManager.getConnection(connectionURL, "admin", "galat hai");
 			return connection;
 		}
 		catch (SQLException e)

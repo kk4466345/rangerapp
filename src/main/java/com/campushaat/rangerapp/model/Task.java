@@ -7,25 +7,49 @@ import java.util.List;
 public class Task {
 	
 	private String taskid;
+	
 	private String remark;
 	private Users creator;  // area manager
 	private Users ranger;	//
 	private Orders taskorder;
-	private Address buyeraddress;
+	
+	private Address buyeraddress;  // no requirement  till now cause buyer belong to order
+	private String buyesmobile;
+
+
+	private String sellermobile;  // seller mobile number
 	private Address selleraddress;
+	
 	private String starttime;  // task start time
 	private String endtime;		// task end time
-	private String tasktype;
+	
+	private Category tasktype;
+	
+	private List<Subtask> subtasklist;
 	
 	
-	private List<tasktodo> takslist;
+	
+//	private List<tasktodo> takslist
 	
 
+	
+		
+	
 	public Task() {
 		super();
 	}
 	
 	
+	public String getSellermobile() {
+		return sellermobile;
+	}
+
+
+	public void setSellermobile(String sellermobile) {
+		this.sellermobile = sellermobile;
+	}
+
+
 	public String getTaskid() {
 		return taskid;
 	}
@@ -116,13 +140,13 @@ public class Task {
 	}
 
 
-	public List<tasktodo> getTakslist() {
-		return takslist;
+	public List<Subtask> getSubtasklist() {
+		return subtasklist;
 	}
 
 
-	public void setTakslist(List<tasktodo> takslist) {
-		this.takslist = takslist;
+	public void setSubtasklist(List<Subtask> subtasklist) {
+		this.subtasklist = subtasklist;
 	}
 
 
@@ -135,16 +159,23 @@ public class Task {
 
 
 
-	public String getTasktype() {
+	public Category getTasktype() {
 		return tasktype;
 	}
 
 
-	public void setTasktype(String tasktype) {
+	public void setTasktype(Category tasktype) {
 		this.tasktype = tasktype;
 	}
 
+	public String getBuyesmobile() {
+		return buyesmobile;
+	}
 
+
+	public void setBuyesmobile(String buyesmobile) {
+		this.buyesmobile = buyesmobile;
+	}
 
 
 }

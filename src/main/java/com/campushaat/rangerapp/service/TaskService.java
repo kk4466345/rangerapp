@@ -65,8 +65,7 @@ public class TaskService {
 		
 		String query="select * from campushaat_db.task \r\n" + 
 				"inner join orders on orders.orderId=task_orderid\r\n" + 
-				"inner join user on user.userId=orders.orderCreatedBy\r\n" + 
-				"inner join address on user.address_id=address.addressId\r\n";
+				"inner join user on user.userId=orders.orderCreatedBy\r\n";
 		boolean iswhereset=false;
 		
 		
@@ -126,6 +125,18 @@ public class TaskService {
 		
 		
 		
+		
+//		######################     status
+		
+		
+		if( !StringUtils.isNullOrEmpty(taskpaylaod.getTaskstatus()) && taskpaylaod.getTaskstatus()!= null) {
+			if(iswhereset) {
+				query=query.concat(" and task.taskstatus >= '"+taskpaylaod.getTaskstatus())+ "'";
+			}else {
+				query=query.concat(" where task.taskstatus ='"+taskpaylaod.getTaskstatus())+ "'";
+				iswhereset=true;
+			}
+		}
 
 		
 		
@@ -141,17 +152,6 @@ public class TaskService {
 		}
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			
 		String sortby=" order by taskstarttime";
 		query=query.concat(sortby);
 		
@@ -169,20 +169,29 @@ public class TaskService {
 			String aremanid=t.getCreator().getUserId();
 			
 			
-			String query="insert into task (task_orderId,rangerId,areamanager_Id,taskstarttime,taskendtime,Remark,tasktype) "
+			
+			
+			t=taskDao.setseller(connection,t);
+			
+			t=taskDao.setbuyer(connection,t);
+			
+			String query="insert into task (task_orderId,rangerId,areamanager_Id,selleraddressId,taskstarttime,taskendtime,Remark,tasktype) "
 					+ "VALUES (" 
 					+ orderid + ","
 					+rangerid+","
 					+aremanid+","
+					+t.getSelleraddress().getAddressId()+","
 					
 					+"'"+t.getStarttime()+"',"
 					+"'"+t.getEndtime() + "',"
 					
 					+"\""+t.getRemark() + "\","
 					
-					+"\""+t.getTasktype() + "\")";
+					+"\""+t.getTasktype().getCategoryId() + "\")";
 			
 			task= taskDao.createTask(query,connection,t);
+			
+			task= taskDao.createsubTask(query,connection,task);
 			
 		}catch(Exception e) {
 			System.out.print(e.toString());

@@ -83,27 +83,5 @@ public class taskresource {
 	}
 	
 	
-//	@Path("tasksearck")
-//	@POST
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public taskResponce searchTask(taskSarchparam tasksearchparam) {
-////		System.out.println("starting\n\n\n\n\n");
-//		return ts.searchTask(tasksearchparam);
-////		return null;
-//	}
-	
-	
-//	@Path("campustask")
-//	@POST
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public taskResponce campustask(Users campususer) {
-////		System.out.println("starting\n\n\n\n\n");
-//		String campusid=campususer.getUsercampus();
-//		return ts.campustaskk(campusid);
-////		return null;
-//	}
-	
 	
 }
